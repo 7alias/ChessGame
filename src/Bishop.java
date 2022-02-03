@@ -10,27 +10,27 @@ public class Bishop extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        //начальная точка не равна конечной
+        //starting line not equals ending
         if (line != toLine && column != toColumn &&
-                //и ходит по диагонали
+                //moving diagonally
                 getMax(line, toLine) - getMin(line, toLine) == getMax(column, toColumn) - getMin(column, toColumn) &&
-                // и все координаты существуют
+                // all coordinates exist
                 checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn) &&
-                // и конечная точка пустая или на ней стоит фигура другого цвета
+                // ending cell is empty or there is a figure of another color
                 (chessBoard.board[toLine][toColumn] == null || !chessBoard.board[toLine][toColumn].color.equals(this.color)) &&
-                // и стартовая клетка не пустая
+                // starting cell is not empty
                 chessBoard.board[line][column] != null) {
-            // сверху слева -> направо вниз
+            // top left  -> down right
             if ((column == getMin(column, toColumn) && line == getMax(line, toLine)) ||
                     (toColumn == getMin(column, toColumn) && toLine == getMax(line, toLine))) {
-//Max и Min нужны чтобы можно было делать обратный ход: сверху справа -> вниз налево
+//Max & Min for moving backwards top right -> down left
                 int fromL = getMax(line, toLine);
                 int fromC = getMin(column, toColumn);
                 int toL = getMin(line, toLine);
                 int toC = getMax(column, toColumn);
-                //позиции которые слон проходит по пути
+                //positions which bishops walks by
                 int[][] positions = new int[toC - fromC][1];
-                // число колонок = числу линий пройденных слоном
+                // columns number = lines number
                 for (int i = 1; i < toC - fromC; i++) {
                     if (chessBoard.board[fromL - i][fromC + i] == null) {
                         positions[i - 1] = new int[]{fromL - i, fromC + i};
@@ -42,14 +42,14 @@ public class Bishop extends ChessPiece {
                 }
                 return true;
             } else {
-//сверху справа -> налево вниз
+//top right -> down left
                     int fromL = getMax(line, toLine);
                     int fromC = getMin(column, toColumn);
                     int toL = getMin(line, toLine);
                     int toC = getMax(column, toColumn);
-                    //позиции которые слон проходит по пути
+                    //positions which bishops walk by
                     int[][] positions = new int[toC - fromC][1];
-                    // число колонок = числу линий пройденных слоном
+                    // columns number = lines number
                     for (int i = 1; i < toC - fromC; i++) {
                         if (chessBoard.board[fromL - i][fromC + i] == null) {
                             positions[i - 1] = new int[]{fromL + i, fromC + i};
@@ -60,7 +60,7 @@ public class Bishop extends ChessPiece {
                         }
                     }
                     return true;}
-            } else return false;
+            } else return true;
 
     }
 

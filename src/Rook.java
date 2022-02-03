@@ -42,7 +42,7 @@ return !chessBoard.board[toLine][column].getColor().equals(this.color) && chessB
                     else return !chessBoard.board[toLine][toColumn].getColor().equals(this.color) && chessBoard.board[toLine][toColumn] !=this;
                 } else return true;
             }else return false;
-        } else return false;
+        } else return true;
     }
 
     @Override

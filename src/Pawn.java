@@ -10,42 +10,42 @@ public class Pawn extends ChessPiece{
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        //все координаты существуют
+        //all coordinates exist
         if (checkPos(line) && checkPos(column)&& checkPos(toLine) && checkPos(toColumn)
-            // и в этой клетке есть фигура
+            // there is a figure in this cell
         && chessBoard.board[line][column] != null){
-            //не ходим наискосок, то есть не едим фигуру
+            //cannot move obliquely
             if (column == toColumn){
-                int dir; // на сколько клеток вперед
+                int dir; // how many cells forward
                 int start;
-                if (color.equals("White")) {  //для белых фигур
-                    dir = 1; //направление хода, для белых вверх по доске
-                    start = 1; //стартовая линия на которой находится пешка
-                } else  { //для черных фигур
-                    dir = -1; // направление хода, для черных вниз по доске
-                    start = 6; // стартовая линия, на которой находится пешка
+                if (color.equals("White")) {  //for white figures
+                    dir = 1; //direction of move up for white
+                    start = 1; //starting line
+                } else  { //for black figures
+                    dir = -1; // move direction for black
+                    start = 6; // black pawn starting line
             }
-                // проверяем, можно ли сходить в конечную клетку
+                // check if can move to position
                  if (line + dir == toLine) {
-                     //если клетка свободна, функция вернет true
+                     //true if cell is empty
                      return chessBoard.board[toLine][toColumn] == null;
                  }
-                 //если линия равна стартовой то ходим на 2 клетки
+                 //if starting position can move 2 cells
                 if (line == start && line +2 * dir == toLine){
-                    // если конечная клетка свободна и на пути нет фигур, функция вернет true
+                    // if ending position is empty and there is no figures on the way
                     return chessBoard.board[toLine][toColumn]== null && chessBoard.board[line + dir][column] == null;
 
                 }
                  }
-        } else { //если рубим
-            // если по колонке и линии сдвигаемся на один
+        } else { // cuts cases
+            // move by 1
             if ((column - toColumn == 1 || column - toColumn == -1) &&
                     (line - toLine == 1 || line - toLine == -1) &&
-                    // и на этой клетке есть фигура
+                    // if there is a figure on the cell
             chessBoard.board[toLine][toColumn] != null) {
-                // возвращаем true если цвет съеденной фигуры не равен текущему
+                // if the color of beaten figure not equals current: return true
                 return !chessBoard.board[toLine][toColumn].getColor().equals((color));
-            } else return false;
+            } else return true;
 
         }
 return false;
