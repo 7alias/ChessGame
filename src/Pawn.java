@@ -45,10 +45,10 @@ public class Pawn extends ChessPiece{
             chessBoard.board[toLine][toColumn] != null) {
                 // if the color of beaten figure not equals current: return true
                 return !chessBoard.board[toLine][toColumn].getColor().equals((color));
-            } else return true;
+            } else return false;
 
         }
-return false;
+return true;
     }
 
     @Override
