@@ -17,12 +17,12 @@ public class ChessBoard {
 
             if (board[startLine][startColumn].canMoveToPosition(this, startLine, startColumn, endLine, endColumn)) {
 
-                if (board[startLine][startColumn].getSymbol().equals("K") ||  // check positions for castling
+                if (board[startLine][startColumn].getSymbol().equals("K") ||  // check position for castling
                         board[startLine][startColumn].getSymbol().equals("R")) {
                     board[startLine][startColumn].check = false;
                 }
 
-                board[endLine][endColumn] = board[startLine][startColumn]; // if figure can move, we move
+                board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
                 board[startLine][startColumn] = null; // set null to previous cell
                 this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
 
@@ -101,7 +101,7 @@ public class ChessBoard {
                     board[0][6] == null && board[0][5] == null) {                             // never moved
                 if (board[0][7].getColor().equals("White") && board[0][4].getColor().equals("White") &&
                         board[0][7].check && board[0][4].check &&
-                        !new King("White").isUnderAttack(this, 0, 6)) { // check that position is not under attack
+                        !new King("White").isUnderAttack(this, 0, 6)) { // check that position nit in under attack
                     board[0][4] = null;
                     board[0][6] = new King("White");   // move King
                     board[0][6].check = false;
