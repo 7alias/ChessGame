@@ -101,7 +101,7 @@ public class ChessBoard {
                     board[0][6] == null && board[0][5] == null) {                             // never moved
                 if (board[0][7].getColor().equals("White") && board[0][4].getColor().equals("White") &&
                         board[0][7].check && board[0][4].check &&
-                        !new King("White").isUnderAttack(this, 0, 6)) { // check that position nit in under attack
+                        !new King("White").isUnderAttack(this, 0, 6)) { // check that position is not under attack
                     board[0][4] = null;
                     board[0][6] = new King("White");   // move King
                     board[0][6].check = false;
