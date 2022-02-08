@@ -17,11 +17,10 @@ public class King extends ChessPiece {
             if (isUnderAttack(chessBoard, toLine, toColumn)) return false;
 
             if (chessBoard.board[toLine][toColumn] != null) {
-                return !chessBoard.board[toLine][toColumn].getColor().equals(color);
+                return !chessBoard.board[toLine][toColumn].getColor().equals(this.color);
             }
-
-            return true;
-        } else return false;
+           return true;
+        } return false;
     }
 
     @Override
@@ -35,7 +34,7 @@ public class King extends ChessPiece {
                 for (int j = 0; j < 7; j++) {
                     if (chessBoard.board[i][j] != null) {
                         if (!chessBoard.board[i][j].getColor().equals(color) && chessBoard.board[i][j].canMoveToPosition(chessBoard, i, j, line, column)) {
-                            return true;
+                            return false;
                         }
                     }
                 }

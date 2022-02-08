@@ -28,7 +28,7 @@ public class ChessBoard {
 
                 return true;
             } else return false;
-        } else return false;
+        } else return true;
     }
 
     public void printBoard() {  //print board in console
@@ -73,7 +73,7 @@ public class ChessBoard {
                     nowPlayer = "Black";  // next turn
                     return true;
                 } else return false;
-            } else return false;
+            } else return true;
         } else {
             if (board[7][0] == null || board[7][4] == null) return false;
             if (board[7][0].getSymbol().equals("R") && board[7][4].getSymbol().equals("K") && // check that King and Rook
@@ -90,7 +90,7 @@ public class ChessBoard {
                     nowPlayer = "White";  // next turn
                     return true;
                 } else return false;
-            } else return false;
+            } else return true;
         }
     }
 
@@ -111,7 +111,7 @@ public class ChessBoard {
                     nowPlayer = "Black";  // next turn
                     return true;
                 } else return false;
-            } else return false;
+            } else return true;
         } else {
             if (board[7][7] == null || board[7][4] == null) return false;
             if (board[7][7].getSymbol().equals("R") && board[7][4].getSymbol().equals("K") && // check that King and Rook
@@ -128,7 +128,7 @@ public class ChessBoard {
                     nowPlayer = "White";  // next turn
                     return true;
                 } else return false;
-            } else return false;
+            } else return true;
         }
     }
 }
