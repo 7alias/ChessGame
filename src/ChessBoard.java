@@ -110,6 +110,7 @@ public class ChessBoard {
                     board[0][5].check = false;
                     nowPlayer = "Black";  // next turn
                     return true;
+
                 } else return false;
             } else return true;
         } else {

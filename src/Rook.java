@@ -1,4 +1,4 @@
-public class Rook extends ChessPiece{
+public class Rook extends ChessPiece {
     public Rook(String color) {
         super(color);
     }
@@ -10,20 +10,22 @@ public class Rook extends ChessPiece{
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-if (checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn)) {
+        if (checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn)) {
             if (column == toColumn) {
-for (int i = getMin(line, toLine); i < getMax(line, toLine); i++) {
+                for (int i = getMin(line, toLine); i < getMax(line, toLine); i++) {
                     if (chessBoard.board[i][column] != null) {
                         if (chessBoard.board[i][column] == this && i == getMax(line, toLine)) return false;
                         else if (chessBoard.board[i][column].getColor().equals(this.color) && i == toLine)
-return false;
+                            return false;
                         else if (!chessBoard.board[i][column].getColor().equals(this.color) && i == toLine)
-return true;}}
+                            return true;
+                    }
+                }
                 if (chessBoard.board[toLine][column] != null) {
                     if (chessBoard.board[toLine][toColumn].getColor().equals(this.color) && chessBoard.board[toLine][column] != this)
-return false;
+                        return false;
                     else
-return !chessBoard.board[toLine][column].getColor().equals(this.color) && chessBoard.board[toLine][column] != this;
+                        return !chessBoard.board[toLine][column].getColor().equals(this.color) && chessBoard.board[toLine][column] != this;
                 } else return true;
 
             } else if (line == toLine) {
@@ -36,12 +38,13 @@ return !chessBoard.board[toLine][column].getColor().equals(this.color) && chessB
                             return true;
                     }
                 }
-                if (chessBoard.board[toLine][toColumn] != null){
+                if (chessBoard.board[toLine][toColumn] != null) {
                     if (chessBoard.board[toLine][toColumn].getColor().equals(this.color) && chessBoard.board[toLine][toColumn] != this)
                         return false;
-                    else return !chessBoard.board[toLine][toColumn].getColor().equals(this.color) && chessBoard.board[toLine][toColumn] !=this;
+                    else
+                        return !chessBoard.board[toLine][toColumn].getColor().equals(this.color) && chessBoard.board[toLine][toColumn] != this;
                 } else return true;
-            }else return false;
+            } else return false;
         } else return true;
     }
 

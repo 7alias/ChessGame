@@ -43,31 +43,32 @@ public class Bishop extends ChessPiece {
                 return true;
             } else {
 //top right -> down left
-                    int fromL = getMax(line, toLine);
-                    int fromC = getMin(column, toColumn);
-                    int toL = getMin(line, toLine);
-                    int toC = getMax(column, toColumn);
-                    //positions which bishops walk by
-                    int[][] positions = new int[toC - fromC][1];
-                    // columns number = lines number
-                    for (int i = 1; i < toC - fromC; i++) {
-                        if (chessBoard.board[fromL - i][fromC + i] == null) {
-                            positions[i - 1] = new int[]{fromL + i, fromC + i};
-                        } else if (!chessBoard.board[fromL - i][fromC + i].color.equals(this.color) && fromL - i == toLine) {
-                            positions[i - 1] = new int[]{fromL + i, fromC + i};
-                        } else {
-                            return false;
-                        }
+                int fromL = getMax(line, toLine);
+                int fromC = getMin(column, toColumn);
+                int toL = getMin(line, toLine);
+                int toC = getMax(column, toColumn);
+                //positions which bishops walk by
+                int[][] positions = new int[toC - fromC][1];
+                // columns number = lines number
+                for (int i = 1; i < toC - fromC; i++) {
+                    if (chessBoard.board[fromL - i][fromC + i] == null) {
+                        positions[i - 1] = new int[]{fromL + i, fromC + i};
+                    } else if (!chessBoard.board[fromL - i][fromC + i].color.equals(this.color) && fromL - i == toLine) {
+                        positions[i - 1] = new int[]{fromL + i, fromC + i};
+                    } else {
+                        return false;
                     }
-                    return true;}
-            } else return true;
+                }
+                return true;
+            }
+        } else return true;
 
     }
 
-            @Override
-            public String getSymbol () {
-                return "B";
-            }
-        }
+    @Override
+    public String getSymbol() {
+        return "B";
+    }
+}
 
 

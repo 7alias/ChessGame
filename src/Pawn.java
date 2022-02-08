@@ -34,7 +34,6 @@ public class Pawn extends ChessPiece{
                 if (line == start && line +2 * dir == toLine){
                     // if ending position is empty and there is no figures on the way
                     return chessBoard.board[toLine][toColumn]== null && chessBoard.board[line + dir][column] == null;
-
                 }
                  }
         } else { // cuts cases
