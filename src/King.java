@@ -11,14 +11,20 @@ public class King extends ChessPiece {
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if (checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn)) {
-            if (Math.abs(line - toLine) > 1 || Math.abs(column - toColumn) > 1) return false;
+        if (checkPos(line)
+                && checkPos(column)
+                && checkPos(toLine)
+                && checkPos(toColumn)) {
+            if (Math.abs(line - toLine) > 1
+                    || Math.abs(column - toColumn) > 1) return false;
             if (isUnderAttack(chessBoard, toLine, toColumn)) return false;
             if (chessBoard.board[toLine][toColumn] != null) {
-                return !chessBoard.board[toLine][toColumn].getColor().equals(this.color);
+                return !chessBoard.board[toLine][toColumn]
+                        .getColor().equals(this.color);
             }
-           return true;
-        } return false;
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -31,7 +37,9 @@ public class King extends ChessPiece {
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 7; j++) {
                     if (chessBoard.board[i][j] != null) {
-                        if (!chessBoard.board[i][j].getColor().equals(color) && chessBoard.board[i][j].canMoveToPosition(chessBoard, i, j, line, column)) {
+                        if (!chessBoard.board[i][j].getColor().equals(color)
+                                && chessBoard.board[i][j]
+                                .canMoveToPosition(chessBoard, i, j, line, column)) {
                             return false;
                         }
                     }

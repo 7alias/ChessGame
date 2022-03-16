@@ -11,7 +11,10 @@ public class Pawn extends ChessPiece{
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         //all coordinates exist
-        if (checkPos(line) && checkPos(column)&& checkPos(toLine) && checkPos(toColumn)
+        if (checkPos(line)
+                && checkPos(column)
+                && checkPos(toLine)
+                && checkPos(toColumn)
             // there is a figure in this cell
         && chessBoard.board[line][column] != null){
             //cannot move obliquely
@@ -31,17 +34,19 @@ public class Pawn extends ChessPiece{
                      return chessBoard.board[toLine][toColumn] == null;
                  }
                  //if starting position can move 2 cells
-                if (line == start && line +2 * dir == toLine){
+                if (line == start
+                        && line +2 * dir == toLine){
                     // if ending position is empty and there is no figures on the way
-                    return chessBoard.board[toLine][toColumn]== null && chessBoard.board[line + dir][column] == null;
+                    return chessBoard.board[toLine][toColumn]== null
+                            && chessBoard.board[line + dir][column] == null;
                 }
                  }
         } else { // cuts cases
             // move by 1
-            if ((column - toColumn == 1 || column - toColumn == -1) &&
-                    (line - toLine == 1 || line - toLine == -1) &&
+            if ((column - toColumn == 1 || column - toColumn == -1)
+                    &&(line - toLine == 1 || line - toLine == -1)
                     // if there is a figure on the cell
-            chessBoard.board[toLine][toColumn] != null) {
+                    && chessBoard.board[toLine][toColumn] != null) {
                 // if the color of beaten figure not equals current: return true
                 return !chessBoard.board[toLine][toColumn].getColor().equals((color));
             } else return false;
