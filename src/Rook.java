@@ -19,9 +19,11 @@ public class Rook extends ChessPiece {
                     if (chessBoard.board[i][column] != null) {
                         if (chessBoard.board[i][column] == this
                                 && i == getMax(line, toLine)) return false;
-                        else if (chessBoard.board[i][column].getColor().equals(this.color) && i == toLine)
+                        else if (chessBoard.board[i][column].getColor().equals(this.color)
+                                && i == toLine)
                             return false;
-                        else if (!chessBoard.board[i][column].getColor().equals(this.color) && i == toLine)
+                        else if (!chessBoard.board[i][column].getColor().equals(this.color)
+                                && i == toLine)
                             return true;
                     }
                 }
