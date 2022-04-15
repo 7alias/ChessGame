@@ -11,11 +11,16 @@ public class Horse extends ChessPiece {
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         //all coordinates exist
-        if (checkPos(line) && checkPos(column) && checkPos(toLine) && checkPos(toColumn)) {
+        if (checkPos(line)
+                && checkPos(column)
+                && checkPos(toLine)
+                && checkPos(toColumn)) {
             //starting position is not equal ending position
             if (line != toLine && column != toColumn &&
                     //and last cell is empty nor color in ending cell equals current
-                    (chessBoard.board[toLine][toColumn] == null || !chessBoard.board[toLine][toColumn].color.equals(this.color))
+                    (chessBoard.board[toLine][toColumn] == null
+                            || !chessBoard.board[toLine][toColumn]
+                            .color.equals(this.color))
                     //and starting cell is not empty
                     && chessBoard.board[line][column] != null) {
                 // starting cell not equals horse
@@ -32,7 +37,8 @@ public class Horse extends ChessPiece {
                 };
                 // can move to position
                 for (int i = 0; i < positions.length; i++){
-                    if (positions[i][0] == toLine && positions[i][1] == toColumn) {
+                    if (positions[i][0] == toLine
+                            && positions[i][1] == toColumn) {
                         return true;
                     }
             }
@@ -41,7 +47,6 @@ public class Horse extends ChessPiece {
         } else return false;
      return true;
 }
-
     @Override
     public String getSymbol() {
         return "H";

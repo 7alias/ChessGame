@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-
     public static ChessBoard buildBoard() {
         ChessBoard board = new ChessBoard("White");
 

@@ -5,7 +5,6 @@ public abstract class ChessPiece {
 
     public ChessPiece(String color) {
         this.color = color;
-
     }
 
     public abstract String getColor();
